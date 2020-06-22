@@ -15,6 +15,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DotNetCoreDemo.Database\DotNetCoreDemo.Database.csproj" />
+    <ProjectReference Include="..\DotNetCoreDemo.Services\DotNetCoreDemo.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Test.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

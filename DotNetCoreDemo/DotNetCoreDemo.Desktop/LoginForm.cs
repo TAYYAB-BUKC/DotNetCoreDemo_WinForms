@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DotNetCoreDemo.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,47 +28,31 @@ namespace DotNetCoreDemo.Desktop
 		{
 			if (IsFormValid())
 			{
-				//List<DbParameter> dbParameters = new List<DbParameter>();
-				//GetParameters(dbParameters);
-
-				//bool IsCredentialsCorrect = (bool)db.GetValue("Users_CheckUsersCredentials", dbParameters);
-				//if (IsCredentialsCorrect)
-				//{
-				//	LoggedInUser.Username = UsernameTextBox.Text;
-				//	this.Hide();
-
-				//	Dashboard dashboard = new Dashboard();
-				//	dashboard.Show();
-				//}
-				//else
-				//{
-				//	Messages.ShowErrorMessage("Incorrect Credentials");
-				//}
+				if (LoginService.CheckUserCredentials(UsernameTextBox.Text, PasswordTextBox.Text))
+				{
+					MessageBox.Show("Hurrah!!! Credentials are correct", "Success Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+				else
+				{
+					MessageBox.Show("Credentials are not correct", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
 			}
 		}
 
-		//private void GetParameters(List<DbParameter> dbParameters)
-		//{
-			//dbParameters.Add(new DbParameter() { Name = "@Username", Value = UsernameTextBox.Text });
-			//dbParameters.Add(new DbParameter() { Name = "@Password", Value = PasswordTextBox.Text });
-		//}
-
 		private bool IsFormValid()
 		{
-			//if (UsernameTextBox.Text.Trim() == String.Empty)
-			//{
-			//	Messages.ShowErrorMessage("Username is required");
-			//	UsernameTextBox.Clear();
-			//	UsernameTextBox.Focus(); 
-			//	return false;
-			//}
-			//if (PasswordTextBox.Text.Trim() == String.Empty)
-			//{
-			//	Messages.ShowErrorMessage("Password is required");
-			//	PasswordTextBox.Clear();
-			//	PasswordTextBox.Focus();
-			//	return false;
-			//}
+			if (UsernameTextBox.Text.Trim() == String.Empty)
+			{
+				MessageBox.Show("Username is required","Error Message",MessageBoxButtons.OK,MessageBoxIcon.Error);
+				UsernameTextBox.Focus();
+				return false;
+			}
+			if (PasswordTextBox.Text.Trim() == String.Empty)
+			{
+				MessageBox.Show("Password is required", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				PasswordTextBox.Focus();
+				return false;
+			}
 			return true;
 		}
 	}
