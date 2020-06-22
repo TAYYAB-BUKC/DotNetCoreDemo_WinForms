@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SMS.Desktop.Forms
+namespace DotNetCoreDemo.Desktop
 {
 	public partial class LoginForm : Form
 	{
-		Db db = new Db(AppSettings.ConnectionString());
+		//Db db = new Db(AppSettings.ConnectionString());
 		public LoginForm()
 		{
 			InitializeComponent();
@@ -27,47 +27,47 @@ namespace SMS.Desktop.Forms
 		{
 			if (IsFormValid())
 			{
-				List<DbParameter> dbParameters = new List<DbParameter>();
-				GetParameters(dbParameters);
+				//List<DbParameter> dbParameters = new List<DbParameter>();
+				//GetParameters(dbParameters);
 
-				bool IsCredentialsCorrect = (bool)db.GetValue("Users_CheckUsersCredentials", dbParameters);
-				if (IsCredentialsCorrect)
-				{
-					LoggedInUser.Username = UsernameTextBox.Text;
-					this.Hide();
+				//bool IsCredentialsCorrect = (bool)db.GetValue("Users_CheckUsersCredentials", dbParameters);
+				//if (IsCredentialsCorrect)
+				//{
+				//	LoggedInUser.Username = UsernameTextBox.Text;
+				//	this.Hide();
 
-					Dashboard dashboard = new Dashboard();
-					dashboard.Show();
-				}
-				else
-				{
-					Messages.ShowErrorMessage("Incorrect Credentials");
-				}
+				//	Dashboard dashboard = new Dashboard();
+				//	dashboard.Show();
+				//}
+				//else
+				//{
+				//	Messages.ShowErrorMessage("Incorrect Credentials");
+				//}
 			}
 		}
 
-		private void GetParameters(List<DbParameter> dbParameters)
-		{
-			dbParameters.Add(new DbParameter() { Name = "@Username", Value = UsernameTextBox.Text });
-			dbParameters.Add(new DbParameter() { Name = "@Password", Value = PasswordTextBox.Text });
-		}
+		//private void GetParameters(List<DbParameter> dbParameters)
+		//{
+			//dbParameters.Add(new DbParameter() { Name = "@Username", Value = UsernameTextBox.Text });
+			//dbParameters.Add(new DbParameter() { Name = "@Password", Value = PasswordTextBox.Text });
+		//}
 
 		private bool IsFormValid()
 		{
-			if (UsernameTextBox.Text.Trim() == String.Empty)
-			{
-				Messages.ShowErrorMessage("Username is required");
-				UsernameTextBox.Clear();
-				UsernameTextBox.Focus(); 
-				return false;
-			}
-			if (PasswordTextBox.Text.Trim() == String.Empty)
-			{
-				Messages.ShowErrorMessage("Password is required");
-				PasswordTextBox.Clear();
-				PasswordTextBox.Focus();
-				return false;
-			}
+			//if (UsernameTextBox.Text.Trim() == String.Empty)
+			//{
+			//	Messages.ShowErrorMessage("Username is required");
+			//	UsernameTextBox.Clear();
+			//	UsernameTextBox.Focus(); 
+			//	return false;
+			//}
+			//if (PasswordTextBox.Text.Trim() == String.Empty)
+			//{
+			//	Messages.ShowErrorMessage("Password is required");
+			//	PasswordTextBox.Clear();
+			//	PasswordTextBox.Focus();
+			//	return false;
+			//}
 			return true;
 		}
 	}

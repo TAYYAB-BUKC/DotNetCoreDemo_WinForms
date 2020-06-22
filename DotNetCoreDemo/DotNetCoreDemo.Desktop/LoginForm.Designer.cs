@@ -1,4 +1,4 @@
-﻿namespace SMS.Desktop.Forms
+﻿namespace DotNetCoreDemo.Desktop
 {
 	partial class LoginForm
 	{
